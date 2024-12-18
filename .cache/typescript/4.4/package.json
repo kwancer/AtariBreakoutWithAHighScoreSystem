@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "dependencies": {
+    "types-registry": "^0.1.699"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/sqlite3": "^3.1.8"
+  }
+}

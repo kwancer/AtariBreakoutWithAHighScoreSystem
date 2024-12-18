@@ -1,3 +1,4 @@
+//uploaded to github
 let bricks = [];
 let ball;
 let bat;
@@ -6,7 +7,7 @@ let score = 0
 let finish = false
 let highScore = 0
 let total = 0
-let notPlayed =true
+let notPlayed = true
 
 //creating bricks
 function resetBricks() {
@@ -20,37 +21,37 @@ function resetBricks() {
     let remainder = width % oneBrick;
     let numberInRow = (width - remainder) / oneBrick; // works out the number of bricks in a row
     let offset = 10 // changes the gaps between bricks
-    let color = [random(0,255),random(0,255),random(0,255)]
+    let color = [random(0, 255), random(0, 255), random(0, 255)]
     let spaceing = remainder / (numberInRow + 1)//calculates the spacing between bricks based on remainder
     console.log(numberInRow)
     total += round(numberInRow)
     for (i = 0; i <= numberInRow; i++) {
       let x = oneBrick * i + spaceing * i + spaceing + offset / 2 //calculates x coordinate of each brick
-      bricks.push(new Brick(x, j * 30 + 30, oneBrick - offset, 20 , color))
+      bricks.push(new Brick(x, j * 30 + 30, oneBrick - offset, 20, color))
 
     }
   }
-  
+
 }
 
 //end of game functions 
 function lost() {
   textAlign(CENTER)
-  fill(255,99,71)
+  fill(255, 99, 71)
   textSize(50)
- displayHighscore()
-  text("You suck lol", width / 2, height / 2 - 100)
+  displayHighscore()
+  text("Game Over", width / 2, height / 2 - 100)
   textSize(22)
   fill(255)
   scoreDisplay()
 }
 
 function won() {
-  fill(0,255,0)
+  fill(0, 255, 0)
   textSize(50)
   textAlign(CENTER)
   displayHighscore()
-  text("Victory Royale!", width / 2, height / 2 - 100)
+  text("Victory!", width / 2, height / 2 - 100)
   fill(255)
   textSize(22)
   scoreDisplay()
@@ -69,7 +70,7 @@ function updateHighscore() {
 }
 //end of end of game functions 
 
-function preload(){
+function preload() {
   oof = loadSound("oof.mp3")
   music = loadSound("song.mp3")
   vr = loadSound("vrt.mp3")
@@ -79,7 +80,7 @@ function preload(){
 
 function setup() {
 
-  createCanvas(windowWidth*3/5, windowHeight*4/5);
+  createCanvas(windowWidth * 3 / 5, windowHeight * 4 / 5);
   //canvas.parent('sketch-holder');
   background(g);
   noCursor();
@@ -118,7 +119,7 @@ function draw() {
   lives.draw()
   lives.decrease(ball.isTouchingBottom())
   if (ball.isTouchingBottom()) {
-   
+
     ball.reset()
     start = true
 
@@ -142,7 +143,7 @@ function draw() {
     }
   }
   if (finish) {
-    
+
     updateHighscore()
     background(0)
     lost()
@@ -153,7 +154,7 @@ function draw() {
     music.pause()
     ball.reset()
     background(0)
-    if(notPlayed){vr.play();notPlayed=false}
+    if (notPlayed) { vr.play(); notPlayed = false }
     won()
   }
 }
@@ -161,21 +162,21 @@ function draw() {
 
 function mousePressed() {
 
-  if(mouseX<width&&mouseX>0&&mouseY<height&&mouseY>0){
+  if (mouseX < width && mouseX > 0 && mouseY < height && mouseY > 0) {
     document.getElementById("con").innerHTML = "      "
-  if (start) {
-    if(lives.count===3){music.play()}
-    ball = new Ball(width/100, height/50, 10);
-    start = false
-    notPlayed = true
-  }
-  if (finish || score === total) {
-    resetBricks()
-    ball.reset()
-    lives.reset()
-    score = 0
-    start = true
-    finish = false
-  }
+    if (start) {
+      if (lives.count === 3) { music.play() }
+      ball = new Ball(width / 100, height / 50, 10);
+      start = false
+      notPlayed = true
+    }
+    if (finish || score === total) {
+      resetBricks()
+      ball.reset()
+      lives.reset()
+      score = 0
+      start = true
+      finish = false
+    }
   }
 }

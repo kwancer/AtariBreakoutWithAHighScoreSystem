@@ -17,7 +17,7 @@ var db = new sql.Database('HighScores.db');
 // create a Scores table in the database
 db.run("CREATE TABLE Scores ( playerName char(30) DEFAULT NULL, score int(11) DEFAULT 0, dateachieved timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP)", (err) => {
  if (err) {
- console.log("oops");
+ console.log("error");
  }
 })
 

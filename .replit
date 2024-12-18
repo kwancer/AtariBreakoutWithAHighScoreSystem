@@ -82,3 +82,7 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
+
+[[ports]]
+localPort = 45527
+externalPort = 80
